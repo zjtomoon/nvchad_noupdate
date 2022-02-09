@@ -6,6 +6,8 @@
 -- MAPPINGS
 local map = require("core.utils").map
 local override_req = require("core.utils").override_req
+local plugin_settings = require("core.utils").load_config().plugins
+local present,packer = pcall(require,plugin_settings.options.packer.init_file)
 
 map("n", "<leader>cc", ":Telescope <CR>")
 map("n", "<leader>q", ":q <CR>")
