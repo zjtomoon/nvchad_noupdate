@@ -36,7 +36,7 @@ else
    fg("Comment", grey_fg)
 end
 
--- Disable cursor line
+-- Disable cusror line
 cmd "hi clear CursorLine"
 -- Line number
 fg("cursorlinenr", white)

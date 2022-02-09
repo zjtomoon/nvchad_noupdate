@@ -8,7 +8,7 @@ local map = require("core.utils").map
 vim.g.mapleader = " "
 
 -- Ctrl+q退出
-map('n', '<C-q>', ':q<CR>')
+map('n', 'Q', ':q<CR>')
 
 -- 快速分屏
 map('n', 'sl', ':set splitright<CR>:vsplit<CR>')
