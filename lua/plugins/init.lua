@@ -143,5 +143,111 @@ return packer.startup(function()
       end,
    }
    -- load user defined plugins
+
+   use {
+      "max397574/better-escape.nvim",
+      event = "InsertEnter",
+   }
+
+   use {
+      "user or orgname/reponame",
+      --further packer options
+   }
+
+   use {
+      "lewis6991/impatient.nvim"
+   }
+
+   use {
+      "nathom/filetype.nvim"
+   }
+
+   -- lsp stuff
+
+   use {
+      "neovim/nvim-lspconfig",
+      module = "lspconfig",
+      opt = true,
+      setup = function()
+         require("core.utils").packer_lazy_load "nvim-lspconfig"
+         -- reload the current file so lsp actually starts for it
+         vim.defer_fn(function()
+            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+         end, 0)
+      end,
+      config = override_req("lspconfig", "plugins.configs.lspconfig"),
+   }
+
+   use {
+      "ray-x/lsp_signature.nvim",
+      disable = not plugin_settings.status.lspsignature,
+      after = "nvim-lspconfig",
+      config = override_req("signature", "plugins.configs.others", "signature"),
+   }
+
+   -- load luasnips + cmp related in insert mode only
+
+   use {
+      "rafamadriz/friendly-snippets",
+      module = "cmp_nvim_lsp",
+      disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
+      event = "InsertEnter",
+   }
+
+   -- cmp by default loads after friendly snippets
+   -- if snippets are disabled -> cmp loads on insertEnter!
+   use {
+      "hrsh7th/nvim-cmp",
+      disable = not plugin_settings.status.cmp,
+      event = not plugin_settings.status.snippets and "InsertEnter",
+      after = plugin_settings.status.snippets and "friendly-snippets",
+      config = override_req("nvim_cmp", "plugins.configs.cmp", "setup"),
+   }
+
+   use {
+      "L3MON4D3/LuaSnip",
+      disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
+      wants = "friendly-snippets",
+      after = "nvim-cmp",
+      config = override_req("luasnip", "plugins.configs.others", "luasnip"),
+   }
+
+   use {
+      "saadparwaiz1/cmp_luasnip",
+      disable = not (plugin_settings.status.cmp and plugin_settings.status.snippets),
+      after = plugin_settings.options.cmp.lazy_load and "LuaSnip",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lua",
+      disable = not plugin_settings.status.cmp,
+      after = (plugin_settings.status.snippets and "cmp_luasnip") or "nvim-cmp",
+   }
+
+   use {
+      "hrsh7th/cmp-nvim-lsp",
+      disable = not plugin_settings.status.cmp,
+      after = "cmp-nvim-lua",
+   }
+
+   use {
+      "hrsh7th/cmp-buffer",
+      disable = not plugin_settings.status.cmp,
+      after = "cmp-nvim-lsp",
+   }
+
+   use {
+      "hrsh7th/cmp-path",
+      disable = not plugin_settings.status.cmp,
+      after = "cmp-buffer",
+   }
+
+   use {
+      "windwp/nvim-autopairs",
+      disable = not plugin_settings.status.autopairs,
+      after = plugin_settings.options.autopairs.loadAfter,
+      config = override_req("nvim_autopairs", "plugins.configs.others", "autopairs"),
+   }
+
    require("core.customPlugins").run(use)
 end)
