@@ -34,8 +34,12 @@ customPlugins.add(function(use)
    
    use {
      "simrat39/rust-tools.nvim",
+     opt = true,
      config = function ()
        require('rust-tools').setup()
+     end,
+     setup = function ()
+       require("core.utils").packer_lazy_load "rust-tools.nvim"
      end
    }
 
