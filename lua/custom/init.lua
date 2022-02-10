@@ -17,8 +17,26 @@ customPlugins.add(function(use)
       "williamboman/nvim-lsp-installer",
    }
 
+   --go-tools
+   -- use {
+   --    "fatih/vim-go"
+   -- }
    use {
-      "fatih/vim-go"
+     "ray-x/go.nvim",
+     opt = true,
+     config = function ()
+       require("go").setup()
+     end,
+     setup = function ()
+       require("core.utils").packer_lazy_load "go.nvim"
+     end
+   }
+   
+   use {
+     "simrat39/rust-tools.nvim",
+     config = function ()
+       require('rust-tools').setup()
+     end
    }
 
    use {
