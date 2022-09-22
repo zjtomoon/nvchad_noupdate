@@ -363,8 +363,16 @@ let g:coc_global_extensions = [
 	\'coc-rust-analyzer',
 	\'coc-cmake',
 	\'coc-clangd',
+	\'coc-omnisharp',
 	\'coc-sql',
 	\'coc-sh',
+	\'coc-html',
+	\'coc-css',
+	\'coc-tsserver',
+	\'coc-angular',
+	\'@yaegassy/coc-volar',
+	\'@yaegassy/coc-volar-tools',
+	\'coc-vetur',
 	\'coc-json',
 	\'coc-explorer']
 
