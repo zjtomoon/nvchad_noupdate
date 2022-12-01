@@ -1,13 +1,13 @@
-source ./vimscript/editor.vim
-source ./vimscript/terminal_behavior.vim
-source ./vimscript/keymap.vim
-source ./vimscript/vim-plug.vim
-source ./vimscript/color.vim
+source ~/.vim/vimscript/editor.vim
+source ~/.vim/vimscript/terminal_behavior.vim
+source ~/.vim/vimscript/keymap.vim
+source ~/.vim/vimscript/vim-plug.vim
+source ~/.vim/vimscript/color.vim
 "vim-plug plugins config
-source ./vimscript/rainbow_brackets.vim
-source ./vimscript/vim-go.vim
-source ./vimscript/coc.vim
-source ./vimscript/other.vim
+source ~/.vim/vimscript/rainbow_brackets.vim
+source ~/.vim/vimscript/vim-go.vim
+source ~/.vim/vimscript/coc.vim
+source ~/.vim/vimscript/other.vim
 
 "config written in lua
 "lua require('')
