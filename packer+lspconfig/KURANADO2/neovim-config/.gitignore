@@ -1,0 +1,5 @@
+autoload
+plugged
+tmp
+.DS_Store
+plugin/

@@ -168,5 +168,8 @@ Plug 'preservim/nerdtree'
   " Plug 'kana/vim-textobj-user'
   " Plug 'roxma/nvim-yarp
 
+	"comment
+	Plug 'preservim/nerdcommenter'
+	"
 call plug#end()
 

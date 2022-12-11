@@ -19,6 +19,8 @@ map <LEADER>j <C-w>j
 map tb :tabe<CR>
 map th :-tabnext<CR>
 map tl :+tabnext<CR>
+map cc <LEADER>cc
+map cu <LEADER>cu
 
 "change the size of splited window
 map <LEADER><up> :res +5<CR>
